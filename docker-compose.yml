@@ -1,0 +1,27 @@
+services:
+  redis:
+    image: redis:7
+    ports:
+      - "6379:6379"
+
+  servera:
+    build: .
+    environment:
+      - PORT=3001
+      - REDIS_URL=redis://redis:6379
+      - JWT_SECRET=dev-secret
+    depends_on:
+      - redis
+    ports:
+      - "3001:3001"
+
+  serverb:
+    build: .
+    environment:
+      - PORT=3002
+      - REDIS_URL=redis://redis:6379
+      - JWT_SECRET=dev-secret
+    depends_on:
+      - redis
+    ports:
+      - "3002:3002"

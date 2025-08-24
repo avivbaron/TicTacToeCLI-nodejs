@@ -1,0 +1,11 @@
+# Node
+node_modules/
+package-lock.json
+
+# Env & secrets
+.env.example
+
+# Editors/IDE
+.vscode/
+.idea/
+
